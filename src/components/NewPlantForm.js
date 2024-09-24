@@ -1,6 +1,15 @@
 import React from "react";
+import {useState} from "react";
 
-function NewPlantForm() {
+function NewPlantForm({addPlant}) {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    image: "",
+    price: ""
+  })
+
+
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>
