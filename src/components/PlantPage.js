@@ -39,7 +39,7 @@ function PlantPage() {
     fetch("http://localhost:6001/plants",{
         method: "POST",
         headers: {
-            "Content-Type": "Application/JSON"
+            "Content-Type": "Application/JSON",
         },
         body: JSON.stringify(newPlant)
     })
@@ -50,7 +50,7 @@ function PlantPage() {
   return (
     <main>
       <NewPlantForm addPlant={addPlant}/>
-      <Search updateSearchText={updateSearchText} searchText={searchText}/>
+      <Search updateSearchText={setSearchText} searchText={searchText}/>
       <PlantList plants={filteredPlants} updatePlant={updatePlant}/>
     </main>
   );

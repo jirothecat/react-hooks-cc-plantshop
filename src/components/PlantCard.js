@@ -2,17 +2,24 @@ import React from "react";
 
 import {useState} from "react";
 
-function PlantCard({plant}) {
+function PlantCard({plant, updatePlant}) {
+
+  const [displayPlantStock, setDisplayPlantStock] = useState(true)
+
+  function toggleDisplayPlantStock(){
+    setDisplayPlantStock(!displayPlantStock)
+    updatePlant(plant.id, !displayPlantStock)
+  }
 
   return (
     <li className="card" data-testid="plant-item">
       <img src={plant.image} alt={plant.name} />
-      <h4>{"plant name"}</h4>
+      <h4>{plant.name}</h4>
       <p>Price: {plant.price}</p>
-      {true ? (
-        <button className="primary">In Stock</button>
+      {displayPlantStock ? (
+      <button className="primary" onClick={toggleDisplayPlantStock}>In Stock</button>
       ) : (
-        <button>Out of Stock</button>
+        <button onClick={toggleDisplayPlantStock}>Out of Stock</button>
       )}
     </li>
   );
